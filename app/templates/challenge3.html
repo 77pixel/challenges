@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="challengebox">
+  <div class="box-header">
+      <h2>Challenge: Python Stack Trace Interpretation</h2>
+      <a href="/">
+          <div class="btn">
+              Back to challenges
+          </div>
+      </a>
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 1</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 45, in <lambda>
+run_trace(1, lambda: perform_calculation(add, '1', 3))
+File "stack_traces.py", line 8, in perform_calculation
+calc(x, y)
+File "stack_traces.py", line 12, in add
+return x + y
+TypeError: can only concatenate str (not "int") to str
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Adding to different types not numbers, '1' shoud be a number. Line 8 first to check if there is no any conversion, next line 12</p>
+          </div>
+      </div>            
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 2</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 46, in <lambda>
+run_trace(2, lambda: perform_calculation(add, 7, '3'))
+File "stack_traces.py", line 8, in perform_calculation
+calc(x, y)
+File "stack_traces.py", line 12, in add
+return x + y
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Adding to different types not numbers, '1' shoud be a number. Line 8 first to check if there is no any conversion, next line 12</p>
+          </div>
+      </div>            
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 3</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 47, in <lambda>
+run_trace(3, lambda: perform_calculation(mult, '3', '3'))
+File "stack_traces.py", line 8, in perform_calculation
+calc(x, y)
+File "stack_traces.py", line 15, in mult
+return x * y
+TypeError: can't multiply sequence by non-int of type 'str'
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Multiplying strings instead of numbers. Line 8 first to check if there is no any conversion, next line 15</p>
+          </div>
+      </div>            
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 4</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 48, in <lambda>
+run_trace(4, lambda: perform_calculation(mult, [4], [3]))
+File "stack_traces.py", line 8, in perform_calculation
+calc(x, y)
+File "stack_traces.py", line 15, in mult
+return x * y
+TypeError: can't multiply sequence by non-int of type 'list'
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Multiplying two lists instead of numbers. Line 8 first to check if there is no any extraction, next line 15</p>
+          </div>
+      </div>            
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 5</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 49, in <lambda>
+run_trace(5, lambda: perform_calculation(innoc, '1', 3))
+File "stack_traces.py", line 8, in perform_calculation
+calc(x, y)
+File "stack_traces.py", line 22, in innoc
+spelunk()
+File "stack_traces.py", line 21, in spelunk
+raise ValueError('Invalid')
+ValueError: Invalid
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Rasied catched exception with valuerror. Line 36</p>
+          </div>
+      </div>            
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 6</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 50, in <lambda>
+run_trace(6, lambda: comp_calc([1, 2, 3], 1, add))
+File "stack_traces.py", line 30, in comp_calc
+return [perform_calculation(calc, x_i, y_i) for x_i, y_i in zip(x, y)]
+TypeError: zip argument #2 must support iteration
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Second param of comp_calc shoud be a list, line 30</p>
+          </div>
+      </div>            
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 7</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 51, in <lambda>
+run_trace(7, lambda: comp_calc([1, 2, [3]], [4, 5, 6], add))
+File "stack_traces.py", line 30, in comp_calc
+return [perform_calculation(calc, x_i, y_i) for x_i, y_i in zip(x, y)]
+File "stack_traces.py", line 30, in <listcomp>
+return [perform_calculation(calc, x_i, y_i) for x_i, y_i in zip(x, y)]
+File "stack_traces.py", line 8, in perform_calculation
+calc(x, y)
+File "stack_traces.py", line 12, in add
+return x + y
+TypeError: can only concatenate list (not "int") to list
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Third param of comp_calc shoud not be a list [3]? Line 8 first to check if there is no any conversion, next line 12</p>
+          </div>
+      </div>            
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 8</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 52, in <lambda>
+run_trace(8, lambda: calc_dict({'one': 1, 'two': '2'}, 'one', 'two', add))
+File "stack_traces.py", line 26, in calc_dict
+return perform_calculation(calc, d[k1], d[k2])
+File "stack_traces.py", line 8, in perform_calculation
+calc(x, y)
+File "stack_traces.py", line 12, in add
+return x + y
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Adding two different types '2' shoudnt be string. Line 8 first to check if there is no any conversion, next line 12</p>
+          </div>
+      </div>
+  </div>
+  <div class="problem">
+      <div class="trace">
+          <h4>Traceback Problem 9</h4>
+              <pre>
+Traceback (most recent call last):
+File "stack_traces.py", line 36, in run_trace
+f()
+File "stack_traces.py", line 53, in <lambda>
+run_trace(9, lambda: calc_dict({}, 'one', 'two', add))
+File "stack_traces.py", line 26, in calc_dict
+return perform_calculation(calc, d[k1], d[k2])
+KeyError: 'one'
+          </pre>
+      </div>
+      <div class="interpretation">
+          <div class="challengbox-answer">
+              <p>Empty dict without any keys - Line 26 first, but real problem is in first param in line 53 in calc_dict.</p>
+          </div>
+      </div>            
+  </div>
+
+{% endblock %}

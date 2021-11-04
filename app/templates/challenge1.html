@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="challengebox">
+   <div class="box-header">
+       <h2>Challenge: Widgets</h2>
+       <a href="/">
+           <div class="btn">
+               Back to challenges
+           </div>
+       </a>
+   </div>
+   
+   <p>Create a basic system description and document a normalized schema from the attached widgets text file.</p>
+   <p>Include</p>
+   <ol>
+       <li>what you think this system would do</li>
+       <div class="challengbox-answer">
+           <table id="example_tab">
+               <thead>
+                    <tr>
+                        <td>widget</td><td>packaging</td><td>customer</td><td>price</td><td>supplier</td><td>cost</td><td>warehouse</td><td>qty</td><td>min_qty</td><td>Diff</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ant Trap</td><td>bag of 10</td><td>Home Place</td><td>$9</td><td>Little Traps</td><td>$0.50</td><td>AUS</td><td>112</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Ant Trap</td><td>bag of 5</td><td>Home Place</td><td>$5</td><td>Little Traps</td><td>$0.50</td><td>AUS</td><td>112</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Ant Trap</td><td>bag of 10</td><td>Bug Store</td><td>$10</td><td>Little Traps</td><td>$0.50</td><td>AUS</td><td>112</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Ant Trap</td><td>bag of 5</td><td>Bug Store</td><td>$6</td><td>Little Traps</td><td>$0.50</td><td>AUS</td><td>112</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Mouse Trap</td><td>bag of 2</td><td>Home Place</td><td>$5</td><td>Little Traps</td><td>$1</td><td>ATL</td><td>200</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Mouse Trap</td><td>bag of 1</td><td>Home Place</td><td>$3</td><td>Little Traps</td><td>$1</td><td>ATL</td><td>200</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Mouse Trap</td><td>bag of 10</td><td>Home Store</td><td>$20</td><td>Little Traps</td><td>$1</td><td>ATL</td><td>200</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Mouse Trap</td><td>bag of 5</td><td>Bug Store</td><td>$15</td><td>Little Traps</td><td>$1</td><td>ATL</td><td>200</td><td>50</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Bear Trap</td><td>bag of 1</td><td>Home Place</td><td>$50</td><td>Big Traps</td><td>$40</td><td>MSP</td><td>10</td><td>10</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Bear Trap</td><td>bag of 5</td><td>Home Store</td><td>$220</td><td>Big Traps</td><td>$40</td><td>MSP</td><td>10</td><td>10</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Bear Trap</td><td>bag of 1</td><td>No Bears R Us</td><td>$60</td><td>Big Traps</td><td>$40</td><td>MSP</td><td>10</td><td>10</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Moose Trap</td><td>bag of 1</td><td>Home Place</td><td>$75</td><td>Big Traps</td><td>$40</td><td>MSP</td><td>5</td><td>5</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Moose Trap</td><td>bag of 1</td><td>No Bears R Us</td><td>$80</td><td>Big Traps</td><td>$40</td><td>MSP</td><td>5</td><td>5</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Elephant Trap</td><td>bag of 1</td><td>Home Place</td><td>$100</td><td>Raytheon</td><td>$90</td><td>MSP</td><td>3</td><td>5</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Elephant Trap</td><td>bag of 1</td><td>No Bears R Us</td><td>$110</td><td>Raytheon</td><td>$90</td><td>MSP</td><td>3</td><td>5</td><td></td>
+                    </tr>
+               </tbody>
+           </table>
+           
+            <p>It is a table from ERP class system.</p>
+            <p>To original data I just inserted last column to present stock levels (some must be purchased!).</p>
+            <p>This system can be used for sale, purchase goods, register inventory or fixed assets, accounting, BI, etc. I was involved in developing and implementing such systems.</p>
+       </div>
+
+        <li>what you feel would be a reasonable database structure for the data and a reasonable architecture for the system</li>
+        <div class="challengbox-answer">
+            
+            <h4>Example of database structure:</h4>
+            
+            <img src="{{url_for('static',filename='img/diagram.svg')}}">
+            
+            <p>The database should have tables contains a dictionary data (customers, goods, suppliers) and tables with id's creating transactions, divided to header tables and items collections (normalized).</p>
+            <h4>Example of architecture:</h4>
+            <img src="{{url_for('static',filename='img/diagram2.svg')}}">
+            
+            <p>The application should have a few type interfeces, of course authentication and permission module, forms to collect the data (views), model to store information.</p>
+            <p>Reasonable is to use MVC design pattern.</p>
+        </div>
+
+       <li>any questions or concerns you have regarding this dataset/system that might need to be answered before establishing an ideal database/solution for such a system.</li>
+       <div class="challengbox-answer">
+           <p>What is a customer company profile</p>
+           <p>How many modules should be implemented (sell, purchase, finances)?</p>
+           <p>Is the company is decentralized?</p>
+           <p>Is there a traders and use a mobile devices?</p>
+           <p>Can we use a cloud solutions (aws, gc, azure)</p>
+           <p>Is the BI/reports system needed?</p>
+           <p>Can we need to transfer historical data to new software?</p>
+       </div>
+   </ol>
+</div>
+<script type="text/javascript" src="{{url_for('static',filename='js/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename='datatables/datatables.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename='js/script1.js')}}"></script>
+{% endblock %}

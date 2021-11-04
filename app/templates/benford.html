@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="box-header">
+    <h2>File Benford's Law</h2>
+    <a href="/challenge/2">
+        <div class="btn">
+            Back 
+        </div>
+    </a>
+  </div>
+  <a class="left" href="/benford/{{fileid}}" target="_blank">
+    <div class="btn link">
+        Open and save a link for future use!
+    </div>
+  </a>
+
+  <div class="challengebox">
+    <h2>File Chart</h2>
+    <div id="chart"></div>
+  </div>
+
+  <div class="challengebox">
+    <h2>File results</h2>
+    <p>Critical value at P-value of 0.05 is 15.51</p>
+    <p>This file has P-value: {{chi_square_stat}}, so it is {{result}}</p>
+    <table id="benford_tab">
+      <thead>
+        <tr><td>Source</td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  {% if show_raw_table == True %}
+  <div class="challengebox">
+    <h2>File table</h2>
+    <table id="table_from_file" class="display" style="width:100%;">
+      <thead>
+        <tr>
+          {% for l in range(table|first|length) %}
+            <th>{{ (table|first)[l]}}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for line in range( 1, table|length) %}
+          <tr>
+            {% for l in range(table[line]|length) %}
+              <td>{{ table[line][l] }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+  <div class="challengebox">
+    <h2>File Errors</h2>
+    <p>Below lines are uncorrect, please check it and run again</p>
+    {% for line in range( 0, errtable|length) %}
+      <p>{{errtable[line]}}</p>
+    {% endfor %}
+  </div>
+
+
+  <script>
+  var serie =[{"name": "Benford", "data":[{{benford[0]}}, {{benford[1]}}, {{benford[2]}}, {{benford[3]}}, {{benford[4]}}, {{benford[5]}}, {{benford[6]}}, {{benford[7]}}, {{benford[8]}}]}, 
+  {"name": "File", "data":[{{file[0]|round(1)}}, {{file[1]|round(1)}}, {{file[2]|round(1)}}, {{file[3]|round(1)}}, {{file[4]|round(1)}}, {{file[5]|round(1)}}, {{file[6]|round(1)}}, {{file[7]|round(1)}}, {{file[8]|round(1)}}]}];
+  </script>
+  <script type="text/javascript" src="{{url_for('static',filename='js/jquery-3.6.0.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='datatables/datatables.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='js/highcharts.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='js/script.js')}}"></script>
+{% endblock %}

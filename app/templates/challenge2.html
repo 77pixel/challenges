@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="challengebox">
+  <div class="box-header">
+      <h2>Challenge: Benford's Law</h2>
+      <a href="/">
+          <div class="btn">
+              Back to challenges
+          </div>
+      </a>
+  </div>
+  
+  <h3>Please set options, choose your file and press send</h3>
+  <form action = "http://localhost:5000/benford/0" method="post" enctype="multipart/form-data">
+      <label>Number of columns
+          <input type="text" name="col_number" value="6"/>
+      </label>
+      <label>Benford column number
+          <input type="text" name="col_benford" value="3"/>
+      </label>
+      <label><input type="checkbox" name="show_raw_table" value="true">
+          Show raw table (may slow down response)
+      </label>
+      <label>Add file
+          <input type="file" name="file">
+      </label>
+      <button>Send</button>
+  </form>
+</div>
+ {% endblock %}

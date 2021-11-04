@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='datatables/datatables.min.css')}}"/>
+</head>
+
+<body>
+  <div class="topheader">
+    <h5>Piotr Furmański</h5>
+    <a class="left" href="tel:+48510600400">+48 510 600 400</a>
+    <a href="mailto:pf1@op.pl">pf1@op.pl</a>
+    <a href="https://www.linkedin.com/in/piotr-furmanski/" target="_blank">
+        <img class="ico" src="{{url_for('static',filename='img/linkedin.svg')}}" alt="linkedin">
+    </a>
+  </div>
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+
+</html>
